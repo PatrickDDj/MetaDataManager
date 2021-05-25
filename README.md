@@ -3,17 +3,18 @@
 The software may not be so complex.
 
 ## Table List
-![](table_list.png)
+<img src="table_list.png" width="400px">
 
 ## Create One Table
-![](create_table.png)
+<img src="create_table.png" width="400px">
+
 
 ## Show Records
-![](show_records.png)
+<img src="show_records.png" width="400px">
 
 ## Add One Record
-![](add_one_record.png)
+<img src="add_one_record.png" width="400px">
 
 ## Edit One Record 
-![](edit_one_record.png)
+<img src="edit_one_record.png" width="400px">
 
