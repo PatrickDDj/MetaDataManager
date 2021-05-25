@@ -3,10 +3,10 @@
 The software may not be so complex.
 
 ## Table List
-<img src="table_list.png" width="400px">
+<img src="table_list.png" width="300px">
 
 ## Create One Table
-<img src="create_table.png" width="400px">
+<img src="create_table.png" width="300px">
 
 
 ## Show Records
