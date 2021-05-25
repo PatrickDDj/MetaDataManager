@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+
+{% block title %}
+    Meta Data Manager
+{% endblock title %}
+
+{% block content %}
+    <script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
+    <script>
+        function confirm_create_table() {
+            layer.open({
+                title: "Confirm",
+                content: "Confirm to create this new table.",
+                yes: function (index, layero) {
+                    var name = $('#table_name').val()
+                    var columns = $('#columns').val()
+                    var href = '{% url 'create_table' %}' + '?' + 'table_name=' + name + '&columns=' + columns;
+                    location.href = href
+                },
+            })
+        }
+    </script>
+
+    <div class="container">
+        <div class="col-lg-6">
+            <form action="{% url 'create_table' %}" method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+            <br>
+            <br>
+            <h3>Table name</h3>
+            <input id="table_name" name="table_name">
+            <br>
+            <br>
+            <h3>Columns</h3>
+            <input id="columns" name="columns">
+            <br>
+            <br>
+{#            <a href="#" class="btn btn-primary" onclick="confirm_create_table()">create table</a>#}
+            <button type="submit" class="btn btn-primary">create table</button>
+                </form>
+        </div>
+
+    </div>
+
+
+
+{% endblock %}

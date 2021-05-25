@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+
+{% block title %}
+    Meta Data Manager
+{% endblock title %}
+
+{% block content %}
+    <script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
+
+
+    <div class="container">
+        <div class="col-lg-6">
+        <br>
+            <br>
+            <h2>{{ table_name }}</h2>
+        <br>
+            <br>
+        <form action="{% url 'edit_record' table_name index %}" method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+            <br>
+            <br>
+            <h3>Record</h3>
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    {% for column in columns %}
+                        <td><b>{{ column }}</b></td>
+                    {% endfor %}
+                </tr>
+                </thead>
+                <tbody>
+                    {% for i in record %}
+                        <td><input name="record" value="{{ i }}" ></td>
+                    {% endfor %}
+                </tbody>
+            </table>
+
+            <button type="submit" class="btn btn-primary">Edit Record</button>
+        </form>
+        </div>
+
+    </div>
+
+
+
+{% endblock %}

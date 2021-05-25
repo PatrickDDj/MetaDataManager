@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+
+{% block title %}
+    Meta Data Manager
+{% endblock title %}
+
+{% block content %}
+    <script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
+
+
+
+    <br>
+
+    <div class="container">
+    <div class="col-12">
+        <div >
+            <h1>Tables&nbsp&nbsp&nbsp&nbsp&nbsp<a href="{% url 'to_create_table' %}" class="btn btn-primary">add table</a></h1>
+
+        </div>
+    <hr>
+        <div>
+            {% for table in tables %}
+                <a href="{% url 'show_records'  table %}" class="btn btn-primary">&nbsp{{ table }}&nbsp</a> &nbsp&nbsp
+            {% endfor %}
+        </div>
+    </div>
+
+
+    </div>
+
+
+
+{% endblock content %}

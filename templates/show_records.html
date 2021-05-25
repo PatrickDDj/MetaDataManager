@@ -1,0 +1,77 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+
+{% block title %}
+    Meta Data Manager
+{% endblock title %}
+
+{% block content %}
+    <script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
+
+    <div class="container">
+        <div class="col-12">
+            <br>
+            <br>
+            <h2>{{ table_name }}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="btn btn-primary"
+                                                                                         href="{% url 'delete_table' table_name %}">Delete</a>
+            </h2>
+            <br>
+            <br>
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    {% for column in columns %}
+                        <td><b>{{ column }}</b></td>
+                    {% endfor %}
+                    <td></td>
+                </tr>
+                </thead>
+                <tbody>
+                {% for record,index in records_index %}
+                    <tr>
+                        {% for i in record %}
+                            <td>{{ i }}</td>
+                        {% endfor %}
+                        <td>
+                            <a href="{% url 'delete_record'  table_name index %}" class="btn btn-primary">Delete</a>
+                            <a href="{% url 'edit_record'  table_name index %}" class="btn btn-primary">Edit</a>
+                        </td>
+                    </tr>
+
+                {% endfor %}
+
+                </tbody>
+            </table>
+        </div>
+
+
+        <div class="col-lg-6">
+            <form action="{% url 'add_record' table_name %}" method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                <br>
+                <br>
+                <h3>Record</h3>
+                <table class="table table-striped">
+                    <thead>
+                    <tr>
+                        {% for column in columns %}
+                            <td><b>{{ column }}</b></td>
+                        {% endfor %}
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for column in columns %}
+                        <td><input name="record"></td>
+                    {% endfor %}
+                    </tbody>
+                </table>
+
+                <button type="submit" class="btn btn-primary">Add Record</button>
+            </form>
+        </div>
+
+    </div>
+
+
+
+{% endblock %}
